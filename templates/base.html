@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{% block title %} {% endblock %}- URL Shortener</title>
+
+		<!-- Tailwind CSS CDN -->
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<!-- Font Awesome 6 CDN -->
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+			rel="stylesheet"
+		/>
+
+		<!-- Toastify CDN -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+	</head>
+	<body
+		class="bg-gradient-to-br from-indigo-200 to-blue-300 text-gray-900 min-h-screen flex flex-col"
+	>
+		{% include 'nav.html' %}
+
+		<div id="toast-container" class="fixed bottom-5 right-5 flex flex-col gap-2 z-50"></div>
+
+		{% include 'partials/signup_modal.html' %}
+		{% include 'partials/login_modal.html' %}
+
+		<main class="flex-1 p-6 overflow-y-auto mt-5">
+			{% block content %} {% endblock %}
+		</main>
+
+		<!-- Custom JS -->
+		<script src="{% static 'js/script.js' %}"></script>
+		<!-- Django Message Modal -->
+		{% if messages %}
+		<script>
+			const djangoMessages = [
+			{% for message in messages %}
+				{
+				message: "{{ message|escapejs }}",
+				type: "{% if 'error' in message.tags %}error{% else %}success{% endif %}"
+				},
+			{% endfor %}
+			];
+
+			djangoMessages.forEach((msg) => {
+			showToast(msg.message, msg.type);
+			});
+		</script>
+		{% endif %}
+
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<nav
+	class="bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 shadow-lg text-white"
+>
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+		<div class="flex justify-between h-16 items-center">
+			<!-- Logo -->
+			<div class="flex items-center space-x-3">
+				<i class="fa-solid fa-link fa-lg"></i>
+				<span class="font-bold text-2xl">Shortify</span>
+			</div>
+
+			<!-- Desktop Links -->
+			<div class="hidden md:flex items-center space-x-8 text-md font-medium">
+				<a href="{% url "home" %}" class="hover:text-emerald-300 transition"
+					><i class="fa-solid fa-home mr-1"></i>Home</a
+				>
+				<a href="{% url "history" %}" class="hover:text-emerald-300 transition"
+					><i class="fa-solid fa-history mr-1"></i>History</a
+				>
+				<a href="{% url "analytics" %}" class="hover:text-emerald-300 transition"
+					><i class="fa-solid fa-chart-line mr-1"></i>Analytics</a
+				>
+				<a href="{% url "about" %}" class="hover:text-emerald-300 transition"
+					><i class="fa-solid fa-info-circle mr-1"></i>About</a
+				>
+			</div>
+
+			<!-- Profile -->
+			<div class="hidden md:flex items-center space-x-3 auth-section">
+				{% if user.is_authenticated %}
+					<span class="text-md">Hi, {{ user.username }} <i class="fa-solid fa-user"></i></span>
+					<a href="{% url 'logout' %}" class="text-white px-3 py-1 rounded bg-red-600">Logout</a>
+				{% else %}
+					<button onclick="openModal('loginModal')" class="text-white px-3 py-1 rounded bg-indigo-600">Login</button>
+					<button onclick="openModal('signupModal')" class="text-white px-3 py-1 rounded bg-green-600">Signup</button>
+				{% endif %}
+			</div>
+
+			<!-- Mobile toggle -->
+			<div class="md:hidden">
+				<button id="navToggleBtn" class="text-white focus:outline-none">
+					<i class="fa-solid fa-bars fa-lg"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Mobile Menu -->
+	<div id="navMobileMenu" class="md:hidden hidden px-4 pb-4">
+		<a href="{% url "home" %}" class="block py-2 hover:text-emerald-300"
+			><i class="fa-solid fa-home mr-2"></i>Home</a
+		>
+		<a href="{% url "history" %}" class="block py-2 hover:text-emerald-300"
+			><i class="fa-solid fa-history mr-2"></i>History</a
+		>
+		<a href="{% url "analytics" %}" class="block py-2 hover:text-emerald-300"
+			><i class="fa-solid fa-chart-line mr-2"></i>Analytics</a
+		>
+		<a href="{% url "about" %}" class="block py-2 hover:text-emerald-300"
+			><i class="fa-solid fa-info-circle mr-2"></i>About</a
+		>
+	</div>
+</nav>

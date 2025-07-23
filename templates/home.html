@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block title %}Home{% endblock %} 
+
+{% block content %}
+<div class="flex items-center justify-center h-full">
+	<div
+		id="home"
+		class="bg-gradient-to-br from-indigo-100 to-blue-200 shadow-lg rounded-xl w-full max-w-xl p-8 border-t-4 border-indigo-400"
+	>
+		<h2 class="text-2xl font-bold text-blue-500 text-center mb-6">
+			<i class="fa-solid fa-link mr-1"></i> Shorten Your Long URL
+		</h2>
+
+		<form id="shortenForm" method="POST" class="space-y-4">
+			{% csrf_token %} 
+      {{ form.as_p }}
+			<button type="submit" class="w-full py-3 bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 text-white font-semibold rounded-md shadow-md hover:bg-gradient-to-r hover:from-indigo-600 hover:via-blue-600 hover:to-cyan-500 transition-transform">Shorten URL</button>
+		</form>
+
+		<div id="resultBox"></div>
+	</div>
+</div>
+{% endblock %}

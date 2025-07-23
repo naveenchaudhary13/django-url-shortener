@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center h-full">
+  <div id="about" class="bg-gradient-to-br from-indigo-100 to-blue-200 shadow-lg rounded-xl w-full max-w-2xl p-8 border-t-4 border-indigo-400">
+    <h2 class="text-2xl font-bold text-blue-500 text-center mb-6">
+      <i class="fa-solid fa-info-circle mr-1"></i> About Shortify
+    </h2>
+
+    <p class="text-gray-800 text-md leading-relaxed">
+      Shortify is a simple and elegant URL shortening service designed to make long links shareable and trackable.
+      Built using Django and styled with Tailwind CSS, our goal is to provide a fast, clean, and responsive experience.
+    </p>
+    <p class="text-gray-700 mt-4 text-sm">
+      Crafted with 💙 by Naveen Chaudhary
+    </p>
+  </div>
+</div>
+{% endblock %}

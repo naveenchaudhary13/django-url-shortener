@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}History{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center h-full">
+	<div
+		id="history"
+		class="bg-gradient-to-br from-indigo-100 to-blue-200 shadow-lg rounded-xl w-full max-w-3xl p-8 border-t-4 border-indigo-400"
+	>
+		<h2 class="text-2xl font-bold text-blue-500 text-center mb-6">
+			<i class="fa-solid fa-history mr-1"></i> Your URL History
+		</h2>
+
+		{% if unauth %}
+			<p class="text-center text-red-600 font-semibold text-lg">
+				Please login first to view your URL history.
+			</p>
+		{% else %}
+		<!-- History Table -->
+		<div class="overflow-x-auto">
+			<table class="min-w-full bg-white rounded shadow-md text-sm">
+				<thead class="bg-indigo-100 text-indigo-700">
+					<tr>
+						<th class="py-2 px-4 text-left">Original URL</th>
+						<th class="py-2 px-4 text-left">Short URL</th>
+						<th class="py-2 px-4 text-left">Clicks</th>
+						<th class="py-2 px-4 text-left">Created At</th>
+						<th class="py-2 px-4 text-left">Expires At</th>
+					</tr>
+				</thead>
+				<tbody class="divide-y divide-gray-200">
+					{% for url in urls %}
+					<tr class="border-b">
+						<td class="py-2 px-4">{{ url.long_url|truncatechars:20 }}</td>
+						<td class="py-2 px-4 text-blue-600 underline">http://127.0.0.1:8000/shortify-url/{{ url.short_code }}</td>
+						<td class="py-2 px-4">{{ url.click_count }}</td>
+						<td class="py-2 px-4">{{ url.created_at }}</td>
+						<td class="py-2 px-4">{{ url.expires_at }}</td>
+					</tr>
+					{% empty %}
+					<tr>
+						<td colspan="5" class="py-2 px-4 text-center">No URLs found.</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
