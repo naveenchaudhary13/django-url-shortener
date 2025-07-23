@@ -36,14 +36,20 @@ source env/bin/activate  # or env\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
 
-### 3. Super Admin Credentials
+### 3. Run Server
+
+```bash
+python manage.py runserver
+```
+
+### 4. Super Admin Credentials
 
 The project comes with an already migrated SQLite database.
 
 - **Username:** `admin`
 - **Password:** `admin`
 
-### 4. Demo Users
+### 5. Demo Users
 
 Three demo users are pre-created:
 
