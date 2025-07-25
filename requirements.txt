@@ -1,5 +1,9 @@
 asgiref==3.9.1
+cffi==1.17.1
+cryptography==45.0.5
 Django==5.2.4
+pycparser==2.22
 sqlparse==0.5.3
 typing_extensions==4.14.1
 tzdata==2025.2
+whitenoise==6.9.0

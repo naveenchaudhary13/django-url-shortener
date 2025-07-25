@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+body {
+	font-family: "Oswald", serif;
+	scroll-behavior: smooth;
+	background: #4f46e5;
+}
+
+#toast-container {
+	position: fixed;
+	bottom: 1.25rem;
+	right: 1.25rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	z-index: 9999;
+}
+
+.toast {
+	padding: 0.75rem 1.25rem;
+	border-radius: 0.375rem;
+	color: white;
+	font-weight: 500;
+	position: relative;
+	overflow: hidden;
+	min-width: 250px;
+	max-width: 300px;
+}
+
+.toast-success {
+	background-color: #16a34a;
+}
+.toast-error {
+	background-color: #dc2626;
+}
+.toast-warning {
+	background-color: #d97706;
+}
+.toast-info {
+	background-color: #2563eb;
+}
+
+.toast-bar {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 4px;
+	width: 100%;
+	animation: shrink 4s linear forwards;
+}
+
+.toast-success .toast-bar {
+	background-color: #a4f0c0;
+}
+.toast-error .toast-bar {
+	background-color: #f49292;
+}
+.toast-warning .toast-bar {
+	background-color: #f7c29a;
+}
+.toast-info .toast-bar {
+	background-color: #96b0f6;
+}
+
+@keyframes shrink {
+	from {
+		width: 100%;
+	}
+	to {
+		width: 0%;
+	}
+}
